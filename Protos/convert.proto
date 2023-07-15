@@ -1,16 +1,16 @@
 syntax = "proto3";
 
-option csharp_namespace = "ConvertCurrencyService.Protos";
+option csharp_namespace = "ConvertCurrencyService";
 
 package convert;
 
-// The greeting service definition.
+// The Converter service definition.
 service Converter {
-  // Sends a greeting
+  // convert a currency to words
   rpc ConvertCurrency (ConverterRequest) returns (CoverterReply);
 }
 
-// The request message containing the user's name.
+// The request message containing the currency in number.
 message ConverterRequest {
   string currencyInNumber = 1;
 }
@@ -18,4 +18,11 @@ message ConverterRequest {
 // The response message containing the greetings.
 message CoverterReply {
   string currencyInWords = 1;
+  ResponseStatus status = 2;
+}
+
+// The response message containing the greetings.
+message ResponseStatus {
+  string status = 1;
+  string message = 2;
 }
